@@ -1,0 +1,42 @@
+import elementos.*
+import plagas.*
+
+test "elementos" {
+	// declaracion clases Hogar
+	const casa1 = new Hogar(mugre = 4, conford = 10)
+	const casa2 = new Hogar(mugre = 3, conford = 7)
+	const casa3 = new Hogar(mugre = 5, conford = 5) 
+	// pruebas clases Hogar
+	assert.that(casa1.esBueno())
+	assert.notThat(casa3.esBueno())
+	// declaracion clases Huerta
+	const quinta1 = new Huerta(produccion = 200,nivelMaxProduccion = 150 )
+	const quinta2 = new Huerta(produccion = 50,nivelMaxProduccion = 150 )
+	// prueba clase Huerta
+	assert.notThat(quinta2.esBueno())
+	// declaracion clases Mascota
+	const firulais = new Mascota(salud = 300)
+	const pelusa = new Mascota(salud = 250)
+	// prueba clases mascotas
+	assert.notThat(pelusa.esBueno())
+	// declaracion clase Barrio
+	const barrioCartero = new Barrio(elementos = [casa1,casa2,casa3,quinta1,quinta2,pelusa])
+	// prueba clase Barrio
+	assert.notThat(barrioCartero.esCopado())
+	// prueba para efecto de plagas
+	// prueba clase Huerta
+	assert.that(quinta1.esBueno())
+	// declaracion clase plagas
+	const cucas = new Cucaracha(poblacion = 50, peso = 8)
+	// prueba de efecto plagas
+	quinta1.efecto(cucas)
+	assert.that(quinta1.esBueno())
+	assert.equals(10,cucas.peso())
+	// prueba de efectos plagas en clase barrio
+	barrioCartero.sufrirAtaque(cucas)
+	assert.equals(22,cucas.peso())
+	
+	
+	
+	//assert.that(true)
+}

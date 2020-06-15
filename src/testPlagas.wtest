@@ -1,0 +1,12 @@
+import plagas.*
+
+test "plagas" {
+	// declaracion de plaga de cucaracha
+	const cucas = new Cucaracha(poblacion = 20, peso = 8)
+	// prueba de clase plaga de cucaracha
+	assert.equals(10,cucas.nivelDanio())
+	assert.notThat(cucas.transmiteEnfermedades())
+	
+	// assert.that(true)
+
+}
